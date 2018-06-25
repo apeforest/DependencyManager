@@ -1,5 +1,5 @@
 # Build MXNet on Windows Machine
-1. Launch a EC2 Windows instance DLAMI.
+1. Launch an EC2 Windows instance DLAMI.
 
 2. Download the required librarys. A helper script is provided in this repo to download and extract archives from the web.
 From CLI, launch the python script "MxNetDependencies.py" without any arguments. The script assumes presence of "MxNetDependencies.json" 
