@@ -1,5 +1,7 @@
-# DependencyManager
-A helper script to download and extract archives from the web.
+# Build MXNet on Windows Machine
+1. Launch a EC2 Windows instance DLAMI.
+
+2. Download the required librarys. A helper script is provided in this repo to download and extract archives from the web.
 From CLI, launch the python script "MxNetDependencies.py" without any arguments. The script assumes presence of "MxNetDependencies.json" 
 in current folder. 
 
@@ -19,53 +21,32 @@ Specify dependencies in following form:
    Note-  The path names should be ecnlosed in quotes if path components contain spaces. That explains why "Extractor" value is enquoted.
    Also, escape back slash characters. 
    
-# Manual steps 
+3. Install visual studio 2015. community edition
 
-A. Install visual studio 2015. community edition
+..1. Sign up for Visual Studio Dev Essentials - https://www.visualstudio.com/dev-essentials/
+..2. From downloads tab, choose "Visual Studio Community 2015 with Update 3"
+..3. Run installer
 
-  1. Sign up for Visual Studio Dev Essentials - https://www.visualstudio.com/dev-essentials/
-  2. From downloads tab, choose "Visual Studio Community 2015 with Update 3"
-  3. Run installer
+4. Download GIT
 
-B. Download GIT
+..1.Download URL https://gitforwindows.org/
+..2.Install. Choose default options on each screen.
 
-   1.Download URL https://gitforwindows.org/
-   2.Install. Choose default options on each screen.
+5. Clone mxnet
 
-C. Clone mxnet
+..1. Launch git bash, mkdir "Work"
+..2. git clone --recursive https://github.com/apache/incubator-mxnet.git mxnet
 
-    1. Launch git bash, mkdir "Work"
-    2. git clone https://github.com/apache/incubator-mxnet.git mxnet
-    3. cd mxnet
-    4. git submodule update --init --recursive
+6. Install cmake
 
-D. Install cmake
+..1. Download - https://cmake.org/files/v3.11/cmake-3.11.1-win64-x64.msi
+..2. Install. Choose "Add cmake to the path for current user"
 
-   1. Download - https://cmake.org/files/v3.11/cmake-3.11.1-win64-x64.msi
-   2. Install. Choose "Add cmake to the path for current user"
-
-E. Install dependencies (You can skip this step if already using the python script to download the packages)
-
-    A MinGW
-        1. Download URL https://sourceforge.net/projects/mingw-w64/files/latest/download?source=typ_redirect
-        2. Install.
-            Choose Architecture as "x86_64"
-            Choose threads as "win32"
-            Choose exception as "seh" ( SEH -  structured exception handling, windows native mechanism which underlies exception handling support in C++)
-        3. Default location where to find relevant binaries -  C:\Program Files\mingw-w64\x86_64-7.3.0-win32-seh-rt_v5-rev0\mingw64\bin
-    B Open Blas
-        1. https://iweb.dl.sourceforge.net/project/openblas/v0.2.19/OpenBLAS-v0.2.19-Win64-int32.zip
-        2. Find the zip file in the downloads folder
-    C Open CV
-        1. Download URL - https://phoenixnap.dl.sourceforge.net/project/opencvlibrary/opencv-win/3.4.1/opencv-3.4.1-vc14_vc15.exe
-
-
-F. Build Mxnet library
+7. Build Mxnet library
 
    Configure dependencies
-   
-   1. create a folder called "ThirdParty" under "Work" folder created above. ( typically C:\Users\Administrator\Work)
-   2. Create a temp folder under "work" "C:\Users\Administrator\Work\temp"
+	1. create a folder called "ThirdParty" under "Work" folder created above. ( typically C:\Users\Administrator\Work)
+	2. Create a temp folder under "work" "C:\Users\Administrator\Work\temp"
 
     Setup OpenBlas
         1. Extract "OpenBLAS-v0.2.19-Win64-int32.zip" under temp folder
@@ -76,7 +57,7 @@ F. Build Mxnet library
         1. Extract "opencv-3.4.1-vc14_vc15.exe" under the temp folder
         2. Copy the OpenCV folder to C:\Users\Administrator\Work\ThirdParty
 
- G. Build Command
+ 8. Build Command
  
         1. Start "VS2015 x64 Native Tools Command Prompt" from the start menu
         2. cd    "C:\Users\Administrator\Work\MxNet"
